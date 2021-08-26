@@ -9,7 +9,21 @@
 <div>
     <h4>Physician</h4>
     <hr />
+
+    <div>
+        <img src="~/@Model.physician.ImagePath" alt="nah man" width="200px" height="200px" />
+    </div>
+
+
     <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.physician.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.physician.Title)
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.physician.FirstName)
@@ -28,6 +42,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.physician.Qualifications)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.physician.Qualifications)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.physician.Biography)
         </dt>
 
@@ -39,6 +61,8 @@
 
     </dl>
 </div>
+
+<p class="crt-album-txt">Upload a new image.</p>
 
 <p>@Html.ActionLink("Generate a new chatcode", "GenerateCode")</p>
 
@@ -56,6 +80,5 @@ else
 
 
 <p>
-    |
-    @Html.ActionLink("Back to List", "Index") | @Html.ActionLink("Edit", "Edit", new { UserId = Model.physician.Id })
+    | @Html.ActionLink("Edit", "Edit", new { UserId = Model.physician.Id })
 </p>

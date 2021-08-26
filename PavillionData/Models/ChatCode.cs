@@ -13,5 +13,6 @@ namespace PavillionData.Models
         public int CodeId { get; set; }
         public int CodeContent { get; set; }
         public DateTime DateGenerated { get; set; }
+        public bool Status { get; set; }
     }
 }

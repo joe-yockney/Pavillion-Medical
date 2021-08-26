@@ -8,7 +8,7 @@ using PavillionData.Models;
 using PavillionData.Models.ViewModels;
 using PavillionData.Repository;
 using System.Data.Entity;
-
+using System.IO;
 
 namespace PavillionMedical.Controllers
 {
@@ -17,6 +17,7 @@ namespace PavillionMedical.Controllers
         private readonly ApplicationDbContext Context = new ApplicationDbContext();
 
         // GET: Physician
+        [Authorize]
         public ActionResult Index()
         {
             var UserId = User.Identity.GetUserId();
@@ -35,6 +36,18 @@ namespace PavillionMedical.Controllers
 
             return View(physicianPersonal);
         }
+        [Authorize]
+        public ActionResult Settings()
+        {
+            var UserId = User.Identity.GetUserId();
+            var Profile = Context.Physicians.Where(c => c.UserId == UserId).FirstOrDefault();
+
+            if (Profile == null)
+            {
+                return RedirectToAction("FirstView");
+            }
+            return View(Profile);
+        }
 
         public ActionResult GenerateCode(ChatCode chatCode)
         {
@@ -46,8 +59,8 @@ namespace PavillionMedical.Controllers
             chatCode = new ChatCode()
             {
                 CodeContent = random.Next(00000, 99999),
-                DateGenerated = DateTime.Now
-                
+                DateGenerated = DateTime.Now,
+                Status = false               
               
             };
 
@@ -89,8 +102,10 @@ namespace PavillionMedical.Controllers
                 Physician = new Physician
                 {
                     UserId = UserId,
+                    Title = Physician.Title,
                     FirstName = Physician.FirstName,
                     LastName = Physician.LastName,
+                    Qualifications = Physician.Qualifications,
                     Biography = Physician.Biography,
 
                 };
@@ -128,6 +143,8 @@ namespace PavillionMedical.Controllers
                     physicianData.FirstName = Physician.FirstName;
                     physicianData.LastName = Physician.LastName;
                     physicianData.Biography = Physician.Biography;
+                    physicianData.Title = Physician.Title;
+                    physicianData.Qualifications = Physician.Qualifications;
                 }
                 catch (Exception)
                 {
@@ -139,6 +156,35 @@ namespace PavillionMedical.Controllers
 
             Context.Entry(physicianData).Property(z => z.UserId).IsModified = false;
 
+            Context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult UploadImage(Physician physician, Image image)
+        {
+            string UserId = User.Identity.GetUserId();
+
+            string extension = Path.GetExtension(physician.UserPicture.FileName);
+            string filename = string.Empty;
+
+            filename = UserId + DateTime.Now.ToString("dd-MM-yyyy--HH-mm-ss") + extension;
+            string imagePath = Server.MapPath("~/Content/Img/");
+
+            string fullPath = "Content/Img/" + filename;
+
+            Physician physician1 = Context.Physicians.Where(c => c.UserId == UserId).FirstOrDefault();
+
+            physician1.ImagePath = fullPath;
+            physician.UserPicture.SaveAs(Path.Combine(imagePath, filename));
+
+            image = new Image
+            {
+                Filename = filename,
+                ImagePath = fullPath,
+            };
+
+            Context.Images.Add(image);
             Context.SaveChanges();
 
             return RedirectToAction("Index");

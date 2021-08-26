@@ -183,6 +183,14 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Custom.css" />
+    <Content Include="Content\Img\5396dca1-3498-4080-9a32-d5f7105ef1eb25-08-2021--15-52-09.JPG" />
+    <Content Include="Content\Img\5396dca1-3498-4080-9a32-d5f7105ef1eb25-08-2021--15-53-23.JPG" />
+    <Content Include="Content\Img\5396dca1-3498-4080-9a32-d5f7105ef1eb25-08-2021--16-00-39.JPG" />
+    <Content Include="Content\Img\5396dca1-3498-4080-9a32-d5f7105ef1eb25-08-2021--16-08-10.JPG" />
+    <Content Include="Content\Img\5396dca1-3498-4080-9a32-d5f7105ef1eb25-08-2021--16-14-07.JPG" />
+    <Content Include="Content\Img\5396dca1-3498-4080-9a32-d5f7105ef1eb25-08-2021--16-16-30.JPG" />
+    <Content Include="Content\Img\5396dca1-3498-4080-9a32-d5f7105ef1eb25-08-2021--16-19-33.JPG" />
+    <Content Include="Content\Img\5396dca1-3498-4080-9a32-d5f7105ef1eb25-08-2021--16-20-55.JPG" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -238,6 +246,8 @@
     <Content Include="Views\Physician\Create.cshtml" />
     <Content Include="Views\Physician\Edit.cshtml" />
     <Content Include="Views\Physician\FirstView.cshtml" />
+    <Content Include="Views\Home\Explore.cshtml" />
+    <Content Include="Views\Physician\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

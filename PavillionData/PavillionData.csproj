@@ -127,9 +127,30 @@
     <Compile Include="Migrations\202108211659494_updatedmodelwithvirtual.Designer.cs">
       <DependentUpon>202108211659494_updatedmodelwithvirtual.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108211723002_addstatustochatcode.cs" />
+    <Compile Include="Migrations\202108211723002_addstatustochatcode.Designer.cs">
+      <DependentUpon>202108211723002_addstatustochatcode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108211818147_update-physician.cs" />
+    <Compile Include="Migrations\202108211818147_update-physician.Designer.cs">
+      <DependentUpon>202108211818147_update-physician.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108211842391_addpicturetophysician.cs" />
+    <Compile Include="Migrations\202108211842391_addpicturetophysician.Designer.cs">
+      <DependentUpon>202108211842391_addpicturetophysician.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108212351232_add-image.cs" />
+    <Compile Include="Migrations\202108212351232_add-image.Designer.cs">
+      <DependentUpon>202108212351232_add-image.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108212355533_addimagetoit.cs" />
+    <Compile Include="Migrations\202108212355533_addimagetoit.Designer.cs">
+      <DependentUpon>202108212355533_addimagetoit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ChatCode.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\PatientComment.cs" />
     <Compile Include="Models\Physician.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -165,6 +186,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108211659494_updatedmodelwithvirtual.resx">
       <DependentUpon>202108211659494_updatedmodelwithvirtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108211723002_addstatustochatcode.resx">
+      <DependentUpon>202108211723002_addstatustochatcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108211818147_update-physician.resx">
+      <DependentUpon>202108211818147_update-physician.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108211842391_addpicturetophysician.resx">
+      <DependentUpon>202108211842391_addpicturetophysician.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108212351232_add-image.resx">
+      <DependentUpon>202108212351232_add-image.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108212355533_addimagetoit.resx">
+      <DependentUpon>202108212355533_addimagetoit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
