@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PavillionMedical.Models;
+using PavillionData.Models;
+using PavillionData.Repository;
 
 namespace PavillionMedical.Controllers
 {
@@ -15,6 +17,7 @@ namespace PavillionMedical.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly ApplicationDbContext context = new ApplicationDbContext();
 
         public ManageController()
         {
@@ -320,6 +323,46 @@ namespace PavillionMedical.Controllers
             }
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
+        }
+
+        public async Task<ActionResult> DeleteAccount()
+        {
+            var userid = User.Identity.GetUserId();
+            var profile = context.Physicians.Where(c => c.UserId == userid).FirstOrDefault();
+            var user = context.Users.Where(c => c.Id == userid).FirstOrDefault();
+
+            try
+            {
+                if (profile != null)
+                {
+                    foreach (var item in profile.Images.ToList())
+                    {
+                        profile.Images.Remove(item);
+                    }
+                    foreach (var item in profile.PatientComments.ToList())
+                    {
+                        profile.PatientComments.Remove(item);
+                    }
+                    foreach (var item in profile.ChatCodes.ToList())
+                    {
+                        profile.ChatCodes.Remove(item);
+                    }
+
+                    context.Physicians.Remove(profile);
+                }
+                
+                
+                await _userManager.DeleteAsync(user);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            context.SaveChanges();
+
+            return RedirectToAction("");
         }
 
         protected override void Dispose(bool disposing)

@@ -147,6 +147,18 @@
     <Compile Include="Migrations\202108212355533_addimagetoit.Designer.cs">
       <DependentUpon>202108212355533_addimagetoit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108261159229_addspecialisation.cs" />
+    <Compile Include="Migrations\202108261159229_addspecialisation.Designer.cs">
+      <DependentUpon>202108261159229_addspecialisation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108261233348_addimagecollection.cs" />
+    <Compile Include="Migrations\202108261233348_addimagecollection.Designer.cs">
+      <DependentUpon>202108261233348_addimagecollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108261339562_addpractice.cs" />
+    <Compile Include="Migrations\202108261339562_addpractice.Designer.cs">
+      <DependentUpon>202108261339562_addpractice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ChatCode.cs" />
@@ -201,6 +213,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108212355533_addimagetoit.resx">
       <DependentUpon>202108212355533_addimagetoit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108261159229_addspecialisation.resx">
+      <DependentUpon>202108261159229_addspecialisation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108261233348_addimagecollection.resx">
+      <DependentUpon>202108261233348_addimagecollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108261339562_addpractice.resx">
+      <DependentUpon>202108261339562_addpractice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

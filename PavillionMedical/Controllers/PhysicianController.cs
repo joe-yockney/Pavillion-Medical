@@ -105,6 +105,7 @@ namespace PavillionMedical.Controllers
                     Title = Physician.Title,
                     FirstName = Physician.FirstName,
                     LastName = Physician.LastName,
+                    Specialisation = Physician.Specialisation,
                     Qualifications = Physician.Qualifications,
                     Biography = Physician.Biography,
 
