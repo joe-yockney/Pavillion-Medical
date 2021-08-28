@@ -7,86 +7,28 @@
 <h2>Index</h2>
 
 <div>
-    <h4>Physician</h4>
+    <h4>Physician Dashboard</h4>
     <hr />
 
-    <div>
-        <img src="~/@Model.physician.ImagePath" alt="nah man" width="200px" height="200px" />
-    </div>
+    <p>@Html.ActionLink("My Details", "ViewPhysician","Explore", new {id = Model.physician.Id }, new { }) </p>
+    <p>@Html.ActionLink("Settings", "Settings", "Physician")</p>
 
+    <p class="crt-album-txt">Upload a new image.</p>
 
-    <dl class="dl-horizontal">
+    <p>@Html.ActionLink("Generate a new chatcode", "GenerateCode")</p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.physician.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.physician.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.physician.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.physician.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.physician.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.physician.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.physician.Practice)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.physician.Practice)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.physician.Qualifications)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.physician.Qualifications)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.physician.Biography)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.physician.Biography)
-        </dd>
-
-
-
-    </dl>
-</div>
-
-<p class="crt-album-txt">Upload a new image.</p>
-
-<p>@Html.ActionLink("Generate a new chatcode", "GenerateCode")</p>
-
-@if (Model.ChatCodes.Any(c => c != null))
-{
-    foreach (var item in Model.ChatCodes)
+    @if (Model.ChatCodes.Any(c => c != null))
     {
-        <p>@item.CodeContent</p>
+        foreach (var item in Model.ChatCodes)
+        {
+            <p>@item.CodeContent</p>
+        }
     }
-}
-else
-{
-    <p>You have no chat codes generated</p>
-}
-
-
-<p>
-    | @Html.ActionLink("Edit", "Edit", new { UserId = Model.physician.Id })
-</p>
+    else
+    {
+        <p>You have no chat codes generated</p>
+    }
+</div>
+    <p>
+        | @Html.ActionLink("Edit", "Edit", new { UserId = Model.physician.Id })
+    </p>

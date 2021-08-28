@@ -23,7 +23,7 @@ namespace PavillionData.Repository
     {
         public DbSet<Physician> Physicians { get; set; }
         public DbSet<PatientComment> PatientComments { get; set; }
-        public DbSet<ChatCode> ChatCodes { get; set; }
+        public DbSet<PatientPin> ChatCodes { get; set; }
         public DbSet<Image> Images { get; set; }
 
 

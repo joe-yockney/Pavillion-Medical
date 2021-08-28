@@ -12,7 +12,7 @@ namespace PavillionData.Models.ViewModels
     {
         public Physician physician { get; set; }
         public IList<PatientComment> PatientComments { get; set; }
-        public IList<ChatCode> ChatCodes { get; set; }
+        public IList<PatientPin> ChatCodes { get; set; }
 
     }
 

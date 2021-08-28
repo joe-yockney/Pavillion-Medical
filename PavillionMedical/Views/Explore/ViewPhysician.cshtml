@@ -4,36 +4,27 @@
     ViewBag.Title = "ViewPhysician";
 }
 
-<h2>ViewPhysician</h2>
+<h2>@Model.Title @Model.FirstName @Model.LastName</h2>
+
+
 
 <div>
     <h4>Physician</h4>
     <hr />
+    @if (Model.ImagePath == null)
+    {
+        <div>
+            <img src="~/Content/Img/avatar-placeholder.png" alt="Alternate Text" width="200px" height="200px" />
+        </div>
+    }
+    else
+    {
+        <div>
+            <img src="~/@Model.ImagePath" alt="Alternate Text" width="200px" height="200px" />
+        </div>
+    }
+
     <dl class="dl-horizontal">
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Biography)
@@ -49,6 +40,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.Practice)
+            <a href="https://www.google.com/search?q= @Model.Practice">Search Practice on google</a>
         </dd>
 
         <dt>
@@ -69,6 +61,42 @@
 
     </dl>
 </div>
+<div>
+    @ViewBag.StatusMessage
+    @using (Html.BeginForm("AddComment", "Explore", new { id = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <p>Enter PatientPin</p>
+            <input type="number" name="chatcode" value="" />
+            <p>Enter your name</p>
+            <input type="text" name="name" value="" />
+            <p>Input a Comment</p>
+            <input type="text" name="input" />
+        </div>
+        <div>
+            <p>Select a rating</p>
+            <label for="cars">Choose a rating:</label>
+            <select id="cars" name="rating">
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=4>5</option>
+            </select>
+        </div>
+        <input type="submit" name="submit" value="Submit" />
+    }
+
+    @foreach (var item in Model.PatientComments)
+    {
+        <p>@item.Name</p>
+        <p>@item.DateCommented</p>
+        <p>@item.Content</p>
+        <p>@item.Rating</p>
+    }
+
+</div>
+
 <p>
     @Html.ActionLink("Back to List", "Index")
 </p>

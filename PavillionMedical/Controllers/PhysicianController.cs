@@ -31,7 +31,7 @@ namespace PavillionMedical.Controllers
             PhysicianPersonalProfile physicianPersonal = new PhysicianPersonalProfile()
             {             
                 physician = Profile,
-                ChatCodes = Profile.ChatCodes.OrderByDescending(c => c.CodeId).ToList()
+                ChatCodes = Profile.PatientPins.OrderByDescending(c => c.CodeId).ToList()
             };
 
             return View(physicianPersonal);
@@ -49,24 +49,24 @@ namespace PavillionMedical.Controllers
             return View(Profile);
         }
 
-        public ActionResult GenerateCode(ChatCode chatCode)
+        public ActionResult GenerateCode(PatientPin chatCode)
         {
             Random random = new Random();
 
             var UserId = User.Identity.GetUserId();
             var Profile = Context.Physicians.Where(c => c.UserId == UserId).FirstOrDefault();
 
-            chatCode = new ChatCode()
+            chatCode = new PatientPin()
             {
                 CodeContent = random.Next(00000, 99999),
                 DateGenerated = DateTime.Now,
-                Status = false               
+                Status = 0,
               
             };
 
             regenerate:
 
-            var ExistingCodes = Profile.ChatCodes.Where(c => c.CodeContent == chatCode.CodeContent).FirstOrDefault();
+            var ExistingCodes = Profile.PatientPins.Where(c => c.CodeContent == chatCode.CodeContent).FirstOrDefault();
 
             if (ExistingCodes != null)
             {
@@ -74,7 +74,7 @@ namespace PavillionMedical.Controllers
                 goto regenerate;
             }
 
-            Profile.ChatCodes.Add(chatCode);
+            Profile.PatientPins.Add(chatCode);
             Context.ChatCodes.Add(chatCode);
 
             Context.SaveChanges();
@@ -105,6 +105,7 @@ namespace PavillionMedical.Controllers
                     Title = Physician.Title,
                     FirstName = Physician.FirstName,
                     LastName = Physician.LastName,
+                    Practice = Physician.Practice,
                     Specialisation = Physician.Specialisation,
                     Qualifications = Physician.Qualifications,
                     Biography = Physician.Biography,
@@ -146,6 +147,8 @@ namespace PavillionMedical.Controllers
                     physicianData.Biography = Physician.Biography;
                     physicianData.Title = Physician.Title;
                     physicianData.Qualifications = Physician.Qualifications;
+                    physicianData.Specialisation = Physician.Specialisation;
+                    physicianData.Practice = Physician.Practice;
                 }
                 catch (Exception)
                 {
@@ -155,11 +158,42 @@ namespace PavillionMedical.Controllers
                 
             }
 
+            if (physicianData.FirstName == null)
+            {
+                Context.Entry(physicianData).Property(z => z.FirstName).IsModified = false;
+            }
+            if (physicianData.LastName == null)
+            {
+                Context.Entry(physicianData).Property(z => z.LastName).IsModified = false;
+            }
+            if (physicianData.Biography == null)
+            {
+                Context.Entry(physicianData).Property(z => z.Biography).IsModified = false;
+            }
+            if (physicianData.Title == null)
+            {
+                Context.Entry(physicianData).Property(z => z.Title).IsModified = false;
+            }
+            if (physicianData.Qualifications == null)
+            {
+                Context.Entry(physicianData).Property(z => z.Qualifications).IsModified = false;
+            }
+            if (physicianData.Specialisation == null)
+            {
+                Context.Entry(physicianData).Property(z => z.Specialisation).IsModified = false;
+            }
+            if (physicianData.Practice == null)
+            {
+                Context.Entry(physicianData).Property(z => z.Practice).IsModified = false;
+            }
+
             Context.Entry(physicianData).Property(z => z.UserId).IsModified = false;
+                      
 
             Context.SaveChanges();
 
             return RedirectToAction("Index");
+
         }
         [HttpPost]
         public ActionResult UploadImage(Physician physician, Image image)

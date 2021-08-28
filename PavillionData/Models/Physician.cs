@@ -25,7 +25,7 @@ namespace PavillionData.Models
         public int Recommendations { get; set; }
         public string ImagePath { get; set; }
         public virtual ICollection<PatientComment> PatientComments { get; set; }
-        public virtual ICollection<ChatCode> ChatCodes { get; set; }
+        public virtual ICollection<PatientPin> PatientPins { get; set; }
         public virtual ICollection<Image> Images { get; set; }
 
         [NotMapped]

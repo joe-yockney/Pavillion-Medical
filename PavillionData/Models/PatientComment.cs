@@ -12,6 +12,8 @@ namespace PavillionData.Models
         [Key]
         public int CommentId { get; set; }
         public DateTime DateCommented { get; set; }
+        public string Name { get; set; }
         public string Content { get; set; }
+        public int Rating { get; set; }
     }
 }

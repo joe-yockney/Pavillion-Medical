@@ -111,3 +111,6 @@ C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\Pavillio
 C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\PavillionData.Migrations.addspecialisation.resources
 C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\PavillionData.Migrations.addimagecollection.resources
 C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\PavillionData.Migrations.addpractice.resources
+C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\PavillionData.Migrations.addratingtocomment.resources
+C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\PavillionData.Migrations.nameoncomment.resources
+C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\PavillionData.Migrations.changebooltointinpin.resources

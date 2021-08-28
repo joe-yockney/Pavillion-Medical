@@ -10,12 +10,22 @@
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                @Html.ActionLink("Hello " + GetFirstname() + "!", "Index", "Physician", routeValues: null, htmlAttributes: new { title = "Manage" })
-            </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-        </ul>
+<ul class="nav navbar-nav navbar-right">
+    @if (GetFirstname() == null)
+    {
+        <li>
+            @Html.ActionLink("Hello User" + "!", "Index", "Physician", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+    }
+    else
+    {
+        <li>
+            @Html.ActionLink("Hello " + GetFirstname() + "!", "Index", "Physician", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+    }
+
+    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+</ul>
     }
 }
 else

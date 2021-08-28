@@ -159,9 +159,21 @@
     <Compile Include="Migrations\202108261339562_addpractice.Designer.cs">
       <DependentUpon>202108261339562_addpractice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108271513455_addratingtocomment.cs" />
+    <Compile Include="Migrations\202108271513455_addratingtocomment.Designer.cs">
+      <DependentUpon>202108271513455_addratingtocomment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108271553311_nameoncomment.cs" />
+    <Compile Include="Migrations\202108271553311_nameoncomment.Designer.cs">
+      <DependentUpon>202108271553311_nameoncomment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108271952470_changebooltointinpin.cs" />
+    <Compile Include="Migrations\202108271952470_changebooltointinpin.Designer.cs">
+      <DependentUpon>202108271952470_changebooltointinpin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ChatCode.cs" />
+    <Compile Include="Models\PatientPin.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\PatientComment.cs" />
     <Compile Include="Models\Physician.cs" />
@@ -222,6 +234,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108261339562_addpractice.resx">
       <DependentUpon>202108261339562_addpractice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108271513455_addratingtocomment.resx">
+      <DependentUpon>202108271513455_addratingtocomment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108271553311_nameoncomment.resx">
+      <DependentUpon>202108271553311_nameoncomment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108271952470_changebooltointinpin.resx">
+      <DependentUpon>202108271952470_changebooltointinpin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

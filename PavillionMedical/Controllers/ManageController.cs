@@ -325,11 +325,11 @@ namespace PavillionMedical.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
-        public async Task<ActionResult> DeleteAccount()
+        public ActionResult DeleteAccount()
         {
             var userid = User.Identity.GetUserId();
             var profile = context.Physicians.Where(c => c.UserId == userid).FirstOrDefault();
-            var user = context.Users.Where(c => c.Id == userid).FirstOrDefault();
+            var user = context.Users.Find(userid);
 
             try
             {
@@ -343,16 +343,16 @@ namespace PavillionMedical.Controllers
                     {
                         profile.PatientComments.Remove(item);
                     }
-                    foreach (var item in profile.ChatCodes.ToList())
+                    foreach (var item in profile.PatientPins.ToList())
                     {
-                        profile.ChatCodes.Remove(item);
+                        profile.PatientPins.Remove(item);
                     }
 
                     context.Physicians.Remove(profile);
                 }
-                
-                
-                await _userManager.DeleteAsync(user);
+
+
+                context.Users.Remove(user);
             }
             catch (Exception)
             {
@@ -360,9 +360,11 @@ namespace PavillionMedical.Controllers
                 throw;
             }
 
+            AuthenticationManager.SignOut();
+
             context.SaveChanges();
 
-            return RedirectToAction("");
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)
