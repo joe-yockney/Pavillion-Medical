@@ -10,7 +10,7 @@ namespace PavillionMedical.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ApplicationDbContext context = new ApplicationDbContext();
+        private readonly PavillionContext context = new PavillionContext();
         public ActionResult Index()
         {
             return View();

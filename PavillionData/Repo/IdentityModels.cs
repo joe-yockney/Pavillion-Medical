@@ -19,22 +19,23 @@ namespace PavillionData.Repository
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class PavillionContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Physician> Physicians { get; set; }
         public DbSet<PatientComment> PatientComments { get; set; }
         public DbSet<PatientPin> ChatCodes { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<PatientMessage> PatientMessages { get; set; }
 
 
-        public ApplicationDbContext()
+        public PavillionContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
-        public static ApplicationDbContext Create()
+        public static PavillionContext Create()
         {
-            return new ApplicationDbContext();
+            return new PavillionContext();
         }
     }
 }

@@ -27,6 +27,7 @@ namespace PavillionData.Models
         public virtual ICollection<PatientComment> PatientComments { get; set; }
         public virtual ICollection<PatientPin> PatientPins { get; set; }
         public virtual ICollection<Image> Images { get; set; }
+        public virtual ICollection<PatientMessage> PatientMessages { get; set; }
 
         [NotMapped]
         public HttpPostedFileBase UserPicture { get; set; }

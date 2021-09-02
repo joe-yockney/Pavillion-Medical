@@ -114,3 +114,8 @@ C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\Pavillio
 C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\PavillionData.Migrations.addratingtocomment.resources
 C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\PavillionData.Migrations.nameoncomment.resources
 C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\PavillionData.Migrations.changebooltointinpin.resources
+C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\PavillionData.Migrations.addpatientmessage.resources
+C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\PavillionData.Migrations.newaddpatientmessage.resources
+C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\PavillionData.Migrations.patientmessagescollection.resources
+C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\PavillionData.Migrations.datesentandisread.resources
+C:\Users\Joe\Documents\Github\Pavillion-Medical\PavillionData\obj\Debug\PavillionData.Migrations.Imagechanges.resources

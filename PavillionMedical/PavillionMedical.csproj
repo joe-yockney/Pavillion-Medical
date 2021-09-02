@@ -260,6 +260,10 @@
     <Content Include="Views\Explore\Index.cshtml" />
     <Content Include="Views\Explore\ViewPhysician.cshtml" />
     <Content Include="Views\Explore\Search.cshtml" />
+    <Content Include="Views\Physician\ViewImages.cshtml" />
+    <Content Include="Views\Physician\ViewMessages.cshtml" />
+    <Content Include="Views\Physician\ImageDetails.cshtml" />
+    <Content Include="Views\Physician\UploadImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

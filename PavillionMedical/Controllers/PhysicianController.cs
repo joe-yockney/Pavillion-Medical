@@ -14,7 +14,7 @@ namespace PavillionMedical.Controllers
 {
     public class PhysicianController : Controller
     {
-        private readonly ApplicationDbContext Context = new ApplicationDbContext();
+        private readonly PavillionContext Context = new PavillionContext();
 
         // GET: Physician
         [Authorize]
@@ -195,9 +195,16 @@ namespace PavillionMedical.Controllers
             return RedirectToAction("Index");
 
         }
-        [HttpPost]
-        public ActionResult UploadImage(Physician physician, Image image)
+        
+        public ActionResult UploadImage(Messages? messages)
         {
+            
+            return View();
+        }
+        [HttpPost]
+        public ActionResult UploadImage(Physician physician, Image image, string ImageName, string ImageDesc)
+        {
+
             string UserId = User.Identity.GetUserId();
 
             string extension = Path.GetExtension(physician.UserPicture.FileName);
@@ -210,19 +217,100 @@ namespace PavillionMedical.Controllers
 
             Physician physician1 = Context.Physicians.Where(c => c.UserId == UserId).FirstOrDefault();
 
-            physician1.ImagePath = fullPath;
-            physician.UserPicture.SaveAs(Path.Combine(imagePath, filename));
-
-            image = new Image
+            try
             {
-                Filename = filename,
-                ImagePath = fullPath,
-            };
+                physician1.ImagePath = fullPath;
+                physician.UserPicture.SaveAs(Path.Combine(imagePath, filename));
 
-            Context.Images.Add(image);
+                image = new Image
+                {
+                    Filename = filename,
+                    ImagePath = fullPath,
+                    ImageName = ImageName,
+                    ImageDesc = ImageDesc
+                };
+
+                physician1.Images.Add(image);
+                Context.Images.Add(image);
+                Context.SaveChanges();
+
+                return RedirectToAction("ViewImages", new { messages = Messages.Success });
+            }
+            catch (Exception)
+            {
+                return View(new { Message = Messages.Error });
+                throw;
+            }
+
+            
+        }
+        public ActionResult ChangeProfilePicture(int id)
+        {
+            string UserId = User.Identity.GetUserId();
+            Physician physician = Context.Physicians.Where(c => c.UserId == UserId).FirstOrDefault();
+            Image image = Context.Images.Where(c => c.ImageId == id).FirstOrDefault();
+
+            try
+            {
+                physician.ImagePath = image.ImagePath;
+                return RedirectToAction("ViewImages", new { messages = Messages.PPSuccess });
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("ViewImages", new { messages = Messages.Error });
+            }
+
+        }
+        public ActionResult ViewImages(Messages? messages) //add album view model
+        {
+            ViewBag.StatusMessage =
+            messages == Messages.Error ? "Something has gone wrong, if the problem persists contact support."
+                : messages == Messages.Success ? "Your Image has been successfully uploaded."
+                : messages == Messages.PPSuccess ? "Your profile picture has successfully been changed"
+                : "";
+
+            var userid = User.Identity.GetUserId();
+            var profile = Context.Physicians.Where(c => c.UserId == userid).FirstOrDefault();
+
+            var images = profile.Images.ToList();
+
+            return View(images);
+        }
+        public ActionResult ViewMessages()
+        {
+            var userid = User.Identity.GetUserId();
+            var profile = Context.Physicians.Where(c => c.UserId == userid).FirstOrDefault();
+
+            var messages = profile.PatientMessages.ToList();
+
+            return View(messages);
+        }
+        public ActionResult SetAsRead(int id)
+        {
+            var userid = User.Identity.GetUserId();
+            var profile = Context.Physicians.Where(c => c.UserId == userid).FirstOrDefault();
+
+            var messages = profile.PatientMessages.Where(c => c.MessageId == id).FirstOrDefault();
+
+            messages.IsRead = true;
+
             Context.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("ViewMessages");
+        }
+        public ActionResult ImageDetails(int id)
+        {
+            Image image = Context.Images.Where(c => c.ImageId == id).FirstOrDefault();
+
+            return View(image);
+        }
+        public enum Messages
+        {
+            Success,
+            Error,
+            PPSuccess,
+
         }
     }
 }

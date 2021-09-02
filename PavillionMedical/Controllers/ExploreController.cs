@@ -10,7 +10,7 @@ namespace PavillionMedical.Controllers
 {
     public class ExploreController : Controller
     {
-        private readonly ApplicationDbContext context = new ApplicationDbContext();
+        private readonly PavillionContext context = new PavillionContext();
         // GET: Explore
         public ActionResult Index()
         {
@@ -21,8 +21,9 @@ namespace PavillionMedical.Controllers
         public ActionResult ViewPhysician(int id, ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.Error ? "This code has already been used or doesnt exist."
-                : message == ManageMessageId.Success ? "Comment successfully posted."             
+                message == ManageMessageId.CodeError ? "This code has already been used or doesnt exist."
+                : message == ManageMessageId.CommentSuccess ? "Comment successfully posted."
+                : message == ManageMessageId.MessageSuccess ? "Message successfully sent."
                 : "";
 
             var profile = context.Physicians.Find(id);
@@ -68,8 +69,7 @@ namespace PavillionMedical.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Sorry, that code is incorrect or has already been used");
-                return RedirectToAction("ViewPhysician", new { Message = ManageMessageId.Error, id = id });
+                return RedirectToAction("ViewPhysician", new { Message = ManageMessageId.CodeError, id = id });
             }
 
             context.SaveChanges();
@@ -77,10 +77,48 @@ namespace PavillionMedical.Controllers
 
             return RedirectToAction("ViewPhysician", new { id = id });
         }
+        public ActionResult ContactPhysician(int id, string name, int pin, string email, string input)
+        {
+            PatientPin patient = context.ChatCodes.Where(c => c.CodeContent == pin).FirstOrDefault();
+
+            Physician physician = context.Physicians.Where(c => c.Id == id).FirstOrDefault();
+
+            if (patient == null)
+            {
+                return RedirectToAction("ViewPhysician", new { Message = ManageMessageId.CodeError, id = id });
+            }
+            else
+            {
+                if (patient.Status == 2)
+                {
+                    return RedirectToAction("ViewPhysician", new { Message = ManageMessageId.CodeError, id = id});
+                }
+                PatientMessage patientMessage = new PatientMessage
+                {
+                    MessageContent = input,
+                    PatientEmail = email,
+                    PatientName = name,
+                    IsRead = false,
+                    Datesent = DateTime.Now,
+                };
+
+                physician.PatientMessages.Add(patientMessage);
+                context.SaveChanges();
+
+                return RedirectToAction("ViewPhysician", new { Message = ManageMessageId.MessageSuccess, id = id });
+            }
+
+        }
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
         public enum ManageMessageId
         {
-            Error,
-            Success
+            CodeError,
+            CommentSuccess,
+            MessageSuccess,
+
         }
     }
 

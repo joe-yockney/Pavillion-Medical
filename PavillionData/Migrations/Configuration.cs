@@ -6,14 +6,14 @@ namespace PavillionData.Migrations
     using System.Linq;
     using PavillionData.Repository;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<PavillionContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ApplicationDbContext context)
+        protected override void Seed(PavillionContext context)
         {
             //  This method will be called after migrating to the latest version.
 

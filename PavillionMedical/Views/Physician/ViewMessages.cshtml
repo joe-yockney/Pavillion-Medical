@@ -1,0 +1,35 @@
+﻿@model IEnumerable<PavillionData.Models.PatientMessage>
+@{
+    ViewBag.Title = "ViewMessages";
+}
+
+<h2>Messages</h2>
+
+@foreach (var item in Model)
+{
+    if (item.IsRead == false)
+    {
+        <h4>Unread</h4>
+        <hr />
+        <p>@item.PatientName | @item.PatientEmail</p>
+
+        <p>@item.MessageContent</p>
+
+        <p>@item.Datesent</p>
+        @Html.ActionLink("Set message as read", "SetAsRead", "Physician", new { id = item.MessageId }, new { })
+        <hr />
+    }
+    else if (item.IsRead == true)
+    {
+        <h4>Read</h4>
+        <hr />
+        <p>@item.PatientName | @item.PatientEmail</p>
+
+        <p>@item.MessageContent</p>
+
+        <p>@item.Datesent</p>
+        @Html.ActionLink("Set message as read", "SetAsRead", "Physician", new { id = item.MessageId }, new { })
+        <hr />
+    }
+}
+

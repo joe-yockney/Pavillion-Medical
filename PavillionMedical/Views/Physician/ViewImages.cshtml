@@ -1,0 +1,17 @@
+﻿@model IEnumerable<PavillionData.Models.Image>
+
+@{
+    ViewBag.Title = "ViewImages";
+}
+
+<h2>ViewImages</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+
+@foreach (var item in Model)
+{
+    <a href="@Url.Action("ImageDetails","Physician", new { id = item.ImageId })">
+        <img src="~/@item.ImagePath" alt="Alternate Text" width="100px" height="100px" />
+    </a>
+
+}

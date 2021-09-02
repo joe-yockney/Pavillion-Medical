@@ -15,5 +15,7 @@ namespace PavillionData.Models
         public int ImageId { get; set; }
         public string ImagePath { get; set; }
         public string Filename { get; set; }
+        public string ImageName { get; set; }
+        public string ImageDesc { get; set; }
     }
 }

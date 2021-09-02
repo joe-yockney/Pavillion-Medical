@@ -10,8 +10,10 @@
     <h4>Physician Dashboard</h4>
     <hr />
 
-    <p>@Html.ActionLink("My Details", "ViewPhysician","Explore", new {id = Model.physician.Id }, new { }) </p>
+    <p>@Html.ActionLink("My Details", "ViewPhysician", "Explore", new { id = Model.physician.Id }, new { }) </p>
     <p>@Html.ActionLink("Settings", "Settings", "Physician")</p>
+    <p>@Html.ActionLink("View Messages", "ViewMessages", "Physician") (@Model.UnreadMessages())</p>
+    <p>@Html.ActionLink("Upload a new image", "UploadImage", "Physician") </p>
 
     <p class="crt-album-txt">Upload a new image.</p>
 
@@ -28,7 +30,8 @@
     {
         <p>You have no chat codes generated</p>
     }
+
 </div>
     <p>
-        | @Html.ActionLink("Edit", "Edit", new { UserId = Model.physician.Id })
+        | @Html.ActionLink("Edit Profile", "Edit", new { UserId = Model.physician.Id })
     </p>

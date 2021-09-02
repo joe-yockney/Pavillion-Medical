@@ -97,6 +97,21 @@
 
 </div>
 
+<div>
+    @ViewBag.StatusMessage
+    @using (Html.BeginForm("ContactPhysician", "Explore", new { id = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <p>Contact this physician</p>
+        <hr />
+        <input type="number" name="pin" value="Enter PatientPin" />
+        <input type="text" name="name" value="Enter your name" />
+        <input type="text" name="email" value="Enter your Email" />
+        <input type="text" name="input" value="Input a Message" />
+        <input type="submit" name="submit" value="Submit" />
+    }
+
+</div>
+
 <p>
     @Html.ActionLink("Back to List", "Index")
 </p>

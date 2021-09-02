@@ -83,16 +83,6 @@
 }
 
 
-@using (Html.BeginForm("UploadImage", "Physician", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-
-    <input type="file" name="UserPicture" required>
-    <input type="submit" value="Upload" name="submit">
-    
-
-}
-
 
 <div>
     @Html.ActionLink("Back to List", "Index")

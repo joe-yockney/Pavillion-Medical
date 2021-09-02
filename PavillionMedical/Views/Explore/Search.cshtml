@@ -4,11 +4,22 @@
     ViewBag.Title = "Search";
 }
 
-<h2>Search</h2>
+<h2>Results</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@using (Html.BeginForm("Search", "Explore", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <input type="text" name="input" value="Search a Physician" />
+    <input type="submit" value="Search" name="submit">
+}
+
+<div>
+    <p>Refine Your results</p>
+    @Html.ActionLink("Alphabetical", "")
+    @Html.ActionLink("Recommendations", "")
+</div>
+
 <table class="table">
     <tr>
         <th>
@@ -29,26 +40,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Title)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.FirstName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.LastName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Specialisation)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Practice)
-    </td>
-    <td>
-        @Html.ActionLink("ViewPhysician", "Explore", new { id = item.Id })
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specialisation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Practice)
+            </td>
+            <td>
+                @Html.ActionLink("ViewPhysician", "Explore", new { id = item.Id })
+            </td>
+        </tr>
+    }
 </table>

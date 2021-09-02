@@ -1,0 +1,16 @@
+﻿@model PavillionData.Models.Image
+
+@{
+    ViewBag.Title = "ImageDetails";
+}
+
+<h2>ImageDetails</h2>
+
+<img src="~/@Model.ImagePath" alt="Alternate Text" height="300px" width="300px"/>
+
+<li class="list-unstyled">
+    <ul>@Html.ActionLink("Set as Profile Picture", "ChangeProfilePicture", "Physician", new { id = Model.ImageId }, new { })</ul>
+    <ul>@Html.ActionLink("Edit Image Details", "", "")</ul>
+    <ul>@Html.ActionLink("Delete Image", "", "")</ul>
+
+</li>

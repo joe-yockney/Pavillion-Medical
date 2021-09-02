@@ -17,7 +17,7 @@ namespace PavillionMedical.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private readonly ApplicationDbContext context = new ApplicationDbContext();
+        private readonly PavillionContext context = new PavillionContext();
 
         public ManageController()
         {
