@@ -14,8 +14,7 @@
     <p>@Html.ActionLink("Settings", "Settings", "Physician")</p>
     <p>@Html.ActionLink("View Messages", "ViewMessages", "Physician") (@Model.UnreadMessages())</p>
     <p>@Html.ActionLink("Upload a new image", "UploadImage", "Physician") </p>
-
-    <p class="crt-album-txt">Upload a new image.</p>
+    <p>@Html.ActionLink("View Images", "ViewImages", "Physician") </p>
 
     <p>@Html.ActionLink("Generate a new chatcode", "GenerateCode")</p>
 

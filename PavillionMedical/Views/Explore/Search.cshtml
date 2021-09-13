@@ -4,63 +4,43 @@
     ViewBag.Title = "Search";
 }
 
-<h2>Results</h2>
-
 @using (Html.BeginForm("Search", "Explore", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-    <input type="text" name="input" value="Search a Physician" />
-    <input type="submit" value="Search" name="submit">
+    <input type="text" name="input" placeholder="Search a Physician.." class="inputbox-explore-refine" />
+    <input type="submit" value="Search" name="submit" class="submitsearch-explore-refine">
 }
 
-<div>
-    <p>Refine Your results</p>
-    @Html.ActionLink("Alphabetical", "")
-    @Html.ActionLink("Recommendations", "")
+<div class="refine-block">
+    <div class="col-md-6 apple">
+        <p>Your search returned <strong>@Model.Count()</strong> Results</p>
+    </div>
+    <div class="col-md-6 banana">
+        <p>Refine Your results</p>
+        @Html.ActionLink("Alphabetical", "")
+        @Html.ActionLink("Recommendations", "")
+    </div> 
+    
 </div>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Specialisation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Practice)
-        </th>
-        <th></th>
-    </tr>
+@foreach (var item in Model)
+ {
+    <div class="result-block">
+        @if (item.ImagePath != null)
+        {
+            <img src="~/@item.ImagePath" alt="Error" height="150" width="150" class="img-results" />
+        }
+        else
+        {
+            <img src="~/Content/Img/avatar-placeholder.png" alt="Alternate Text" height="150" width="150" class="img-results" />
+        }
+        <a href="@Url.Action("ViewPhysician","Explore", new { id = item.Id })">@item.Title @item.FirstName @item.LastName</a>
+        <ul class="list-unstyled search-listing">
+            <li><strong>Practice:</strong> @item.Practice</li>
+            <li><strong>Specialisation:</strong> @item.Specialisation</li>
+        </ul>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Specialisation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Practice)
-            </td>
-            <td>
-                @Html.ActionLink("ViewPhysician", "Explore", new { id = item.Id })
-            </td>
-        </tr>
-    }
-</table>
+    </div>
+ }
+

@@ -9,7 +9,29 @@
 {
     @Html.AntiForgeryToken()
 
-    <input type="text" name="input" value="Search a Physician" />
-    <input type="submit" value="Search" name="submit">
+    <div class="explore-search">
+
+        <p class="explore-search-text"> Search for your Physician.</p>
+
+        <input type="text" name="input" placeholder="Physician name, practice, specialisation..." class="inputbox-explore" />
+
+        <div class="bottom-row-search">
+
+
+            <a href="#" class="more-info-explore" onclick="toggleMoreInfo()">More Info</a>
+            @Html.ActionLink("Advanced Search", "-", "-", new { @class = "advanced-search" })
+            <input type="submit" value="Search" name="submit" class="submitsearch-explore">
+        </div>
+
+
+    </div>
+
 }
+<div class="more-info" id ="more-info">
+    <p> <strong>Use the search bar to search for your physician..</strong></p>
+    <p>This can be done by searching for their first or last name.. </p>
+    <p>Or by searching the name of their practice or even their specialisation..</p>
+    <p>For example, I can search "Haemotology" or "Red leaf surgery", in order to find my doctor</p>
+</div>
+
 

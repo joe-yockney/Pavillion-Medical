@@ -14,51 +14,46 @@
         <ul class="uo-list list-unstyled">
             <li><span style="font-size:40px;cursor:pointer">&#9776;</span></li>
         </ul>
-        @Html.ActionLink("Pavillion", "Index", "Home", new { @class = "ideal-brand-nav" })
-        @Html.ActionLink("Home", "Index", "Home")
-        @Html.ActionLink("Explore", "Index", "Home")
-        @Html.ActionLink("About Us", "Index", "Home")
+        <div class="brand-nav-ideal">
+            @Html.ActionLink("Pavillion", "Index", "Home", new { }, new { @class = "ideal-brand-nav" })
+        </div>
+        <div class="side-nav-listitems">
+            <a href="@Url.Action("Index", "Home")">
+                <i class="glyphicon glyphicon-home"></i>  Home
+            </a>
+            <a href="@Url.Action("Index", "Explore")">
+                <i class="glyphicon glyphicon-search"></i>  Explore
+            </a>
+            <a href="@Url.Action("About", "Home")">
+                <i class="glyphicon glyphicon-question-sign"></i>  About
+            </a>
+ 
+        </div>
+        <div class="side-nav-login">
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <p class="login-text">Are you a Physician?</p>
+            }
 
-        @Html.Partial("_LoginPartial");
+            @Html.Partial("_LoginPartial");
+        </div>
+        
+        
+
+        
 
     </div>
 
-
-    <script>
-
-        var isOpen = true;
-
-        function toggleSidebar() {
-            if (isOpen) {
-                document.getElementById("mySidenav").style.width = "300px";
-                this.isOpen = false;
-            }
-            else {
-                document.getElementById("mySidenav").style.width = "70px";
-                this.isOpen = true;
-            }
-        }
-
-        function openNav() {
-            document.getElementById("mySidenavTwo").style.width = "250px";
-            isOpen = true;
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenavTwo").style.width = "0px";
-        }
-    </script>
-
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
+        <footer class="footer-bottom">
             <p>&copy; @DateTime.Now.Year - Pavillion Medical</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/scripts/custom.js")
     @RenderSection("scripts", required: false)
 </body>
 </html>

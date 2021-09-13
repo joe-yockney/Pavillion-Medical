@@ -11,6 +11,14 @@ body {
     font-family: Avenir;
 
 }
+.footer-bottom {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+}
 /*Navbar*/
 /*.sidebar-nav {
     position: absolute;
@@ -37,7 +45,6 @@ body {
 .navbar-inverse .navbar-brand {
     color: #000000;
 }*/
-
 .sidenavOne {
     height: 100%;
     width: 70px;
@@ -45,7 +52,7 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color:#8FB7BC;
+    background-color: #8FB7BC;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 30px;
@@ -67,22 +74,35 @@ body {
     margin-top: -66px;
     font-family:AvenirBold;
 }
-
-.sidenavOne a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 26px;
-  color: #000000;
-  display: block;
-  transition: 0.3s;
-  overflow-x:hidden;
-  white-space:nowrap;
-  margin-left: 50px;
-      
+.brand-nav-ideal a {
+    padding: 2px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+    overflow-x: hidden;
+    white-space: nowrap;
+    margin-left: 50px;
+}
+.side-nav-listitems a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 23px;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+    overflow-x: hidden;
+    white-space: nowrap;
+    margin-left: 50px;
 }
 
 
-.sidenavTwo a:hover {
+.sidenavOne:hover {
+  color: #f1f1f1;
+}
+
+.sidenavOne a:hover {
   color: #f1f1f1;
 }
 
@@ -102,24 +122,185 @@ body {
 .uo-list {
     padding-left:17px;
 }
-.logged-list {
-
+.side-nav-login {
+    position: absolute;
+    bottom: 0;
 }
-.login-list {
 
+.side-nav-login a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 23px;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+    overflow-x: hidden;
+    white-space: nowrap;
+    margin-left: 50px;
 }
-@media screen and (max-width: 1000px){
-    .logged-list {
-    }
-
-    .login-list {
-    }
+.side-nav-login p {
+    padding: 8px 8px 8px 32px;
+    font-size: 16px;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+    overflow-x: hidden;
+    white-space: nowrap;
+    margin-left: 50px;
+    text-decoration: underline;
 }
-@media screen and (max-width: 600px){
-    .logged-list {
-    }
+/*Explore pages*/
 
-    .login-list {
-    }
+/*Index*/
+.explore-search-text {
+    font-size: 30px;
+    margin-left: 28px;
+    padding-top: 20px;
+}
+.explore-search {
+    background: #FFFFFF;
+    height: 200px;
+    width: 900px;
+    margin-left: 100px;
+    border-radius: 20px;
+}
+.inputbox-explore {
+    width: 840px;
+    margin-left: 27px;
+    border-radius: 10px;
+    height: 40px;
+    font-size: 20px;
+    padding-left: 15px;
+    padding-top: 5px;
+}
+.submitsearch-explore {
+    margin-left: 520px;
+    width: 150px;
+    height: 50px;
+    background: #DEDBD2;
+    border-radius: 10px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    transition: 0.2s;
+}
+.submitsearch-explore:hover {
+    background: white;
+}
+.advanced-search {
+    position: relative;
+    left: 500px;
+    top: 13px;
+    transition: 0.2s;
+    
+}
+.advanced-search:hover {
+    text-decoration: underline;
+}
+.bottom-row-search {
+    margin-top: 20px;
+}
+.more-info-explore {
+    position: relative;
+    left: 28px;
+    top: 13px;
+    transition: 0.2s;
+}
+.more-info-explore:hover{
+    text-decoration: underline;
+}
+.more-info {
+    background: #FFFFFF;
+    height: 0px;
+    width: 900px;
+    margin-left: 100px;
+    margin-top: 10px;
+    border-radius: 20px;
+    transition: 0.3s;
+    overflow-x:hidden;
+    overflow-y:hidden;
+}
+.more-info p {
+    overflow-x: hidden;
+    white-space: nowrap;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+
+
+/*Results*/
+
+.result-block {
+    background: white;
+    border-radius: 20px;
+    height: 200px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 20px;
+}
+.result-block a {
+    display: inline-block;
+    position: relative;
+    bottom: 60px;
+    left: 20px;
+    font-size: 20px;
+}
+.refine-block {
+    background: white;
+    border-radius: 20px;
+    height: 100px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 20px;
+}
+.apple p {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-left: -13px;
+}
+.banana a {
+    float: right;
+    margin-top: 20px;
+    padding: 10px;
+    position: relative;
+    left: 124px;
+    top: 15px;
+}
+.banana p {
+    float:right;
+}
+.search-listing {
+    position: relative;
+    left: 175px;
+    bottom: 110px;
+}
+.search-listing li {
+    font-size:18px;
+}
+.img-results {
+    border-radius:20px;
+}
+.inputbox-explore-refine {
+    width: 500px;
+    margin-left: 13px;
+    border-radius: 10px;
+    height: 40px;
+    font-size: 20px;
+    padding-left: 15px;
+    padding-top: 5px;
+}
+.submitsearch-explore-refine {
+    width: 147px;
+    height: 40px;
+    background: #DEDBD2;
+    border-radius: 10px;
+    font-size: 19px;
+    letter-spacing: 2px;
+    transition: 0.2s;
+    position: relative;
+    bottom: 3px;
+}
+.submitsearch-explore-refine:hover {
+    background: white;
 }
 
