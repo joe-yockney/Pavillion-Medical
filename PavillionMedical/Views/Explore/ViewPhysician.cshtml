@@ -4,114 +4,40 @@
     ViewBag.Title = "ViewPhysician";
 }
 
-<h2>@Model.Title @Model.FirstName @Model.LastName</h2>
 
-
-
-<div>
-    <h4>Physician</h4>
-    <hr />
-    @if (Model.ImagePath == null)
-    {
-        <div>
-            <img src="~/Content/Img/avatar-placeholder.png" alt="Alternate Text" width="200px" height="200px" />
-        </div>
-    }
-    else
-    {
-        <div>
-            <img src="~/@Model.ImagePath" alt="Alternate Text" width="200px" height="200px" />
-        </div>
-    }
-
-    <dl class="dl-horizontal">
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Biography)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Biography)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Practice)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Practice)
-            <a href="https://www.google.com/search?q= @Model.Practice">Search Practice on google</a>
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Qualifications)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Qualifications)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Recommendations)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Recommendations)
-        </dd>
-
-    </dl>
-</div>
-<div>
-    @ViewBag.StatusMessage
-    @using (Html.BeginForm("AddComment", "Explore", new { id = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <div>
-            <p>Enter PatientPin</p>
-            <input type="number" name="chatcode" value="" />
-            <p>Enter your name</p>
-            <input type="text" name="name" value="" />
-            <p>Input a Comment</p>
-            <input type="text" name="input" />
-        </div>
-        <div>
-            <p>Select a rating</p>
-            <label for="cars">Choose a rating:</label>
-            <select id="cars" name="rating">
-                <option value=1>1</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=4>5</option>
-            </select>
-        </div>
-        <input type="submit" name="submit" value="Submit" />
-    }
-
-    @foreach (var item in Model.PatientComments)
-    {
-        <p>@item.Name</p>
-        <p>@item.DateCommented</p>
-        <p>@item.Content</p>
-        <p>@item.Rating</p>
-    }
-
-</div>
-
-<div>
-    @ViewBag.StatusMessage
-    @using (Html.BeginForm("ContactPhysician", "Explore", new { id = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <p>Contact this physician</p>
+<div class="profile-container">
+    <div class="top-profile">
+        <h4>Physician</h4>
         <hr />
-        <input type="number" name="pin" value="Enter PatientPin" />
-        <input type="text" name="name" value="Enter your name" />
-        <input type="text" name="email" value="Enter your Email" />
-        <input type="text" name="input" value="Input a Message" />
-        <input type="submit" name="submit" value="Submit" />
-    }
+        <div class="col-md-3">
+            @if (Model.ImagePath == null)
+            {
+                <div>
+                    <img src="~/Content/Img/avatar-placeholder.png" alt="Alternate Text" width="200px" height="200px" />
+                </div>
+            }
+            else
+            {
+                <div>
+                    <img src="~/@Model.ImagePath" alt="Alternate Text" width="200px" height="200px" />
+                </div>
+            }
+        </div>
+        <div class="col-lg-6">
+            <h2>@Model.Title @Model.FirstName @Model.LastName</h2>
+            <p>Job Title Here</p>           
+        </div>
+        <div class="col-lg-3">
+            <p>placeholder</p>
+        </div>
+        <div class="col-lg-4">
+            <p>@Model.Specialisation</p>
+
+        </div>
+      
+
+
+    </div>
+    
 
 </div>
-
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>

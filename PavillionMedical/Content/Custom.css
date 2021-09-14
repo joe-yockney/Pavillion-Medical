@@ -304,3 +304,24 @@ body {
     background: white;
 }
 
+/*Profile*/
+
+.profile-container {
+    background: white;
+    height: 1000px;
+    margin-top: -20px;
+    border-radius: 20px;
+}
+.top-profile {
+    margin-left: 30px;
+    padding-top: 10px;
+}
+.top-profile h2 {
+
+}
+.top-profile img {
+    border-radius: 20px;
+}
+.top-profile h4 {
+
+}
