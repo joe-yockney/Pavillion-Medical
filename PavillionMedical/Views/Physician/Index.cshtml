@@ -1,36 +1,72 @@
 ﻿@model PavillionData.Models.ViewModels.PhysicianPersonalProfile
-
 @{
     ViewBag.Title = "Index";
+
 }
 
-<h2>Index</h2>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="dash-title">
+                <h1><strong>Physician Dashboard</strong></h1>
+            </div>
+        </div>
+        <div class="row">
 
-<div>
-    <h4>Physician Dashboard</h4>
-    <hr />
+            <div class="col-lg-12">
+                <div class="dashbox">
+                    <a href="@Url.Action("ViewPhysician", "Explore", new { id = Model.physician.Id })">My Details <i class="glyphicon glyphicon-paperclip"></i></a>
+                    <a>My Practices <i class="glyphicon glyphicon-home"></i></a>
+                    <a href="@Url.Action("ViewMessages","Physician")">Messages <span style="color:darkred;">(@Model.physician.PatientMessages.Count())</span></a>
+                    <a href="@Url.Action("ViewImages", "Physician")">Images <i class="glyphicon glyphicon-picture"></i></a>
+                    <a href="#" onclick="togglePatientpin()">PatientPin <i class="glyphicon glyphicon-star"></i></a>
+                    <a href="@Url.Action("Settings", "Physician")">Settings <i class="glyphicon glyphicon-cog"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <img class="dash-banner" src="~/Content/Img/medical-doctor-group-physician-team-260nw-1494395756.jpg" alt="Alternate Text" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="patient-pin" class="patientpin-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Generated Codes</th>
+                                <th>Date Generated</th>
+                                <th>Code Status</th>
+                                <th>Reference</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                @foreach (var item in Model.ChatCodes)
+                                {
+                                    <tr>
+                                        <td>@item.CodeContent</td>
+                                        <td>@item.DateGenerated</td>
+                                        <td>@item.Status</td>
+                                        <td>Reference here</td>
+                                        <td>Remove | Restore</td>
+                                        
+                                    </tr>
 
-    <p>@Html.ActionLink("My Details", "ViewPhysician", "Explore", new { id = Model.physician.Id }, new { }) </p>
-    <p>@Html.ActionLink("Settings", "Settings", "Physician")</p>
-    <p>@Html.ActionLink("View Messages", "ViewMessages", "Physician") (@Model.UnreadMessages())</p>
-    <p>@Html.ActionLink("Upload a new image", "UploadImage", "Physician") </p>
-    <p>@Html.ActionLink("View Images", "ViewImages", "Physician") </p>
 
-    <p>@Html.ActionLink("Generate a new chatcode", "GenerateCode")</p>
 
-    @if (Model.ChatCodes.Any(c => c != null))
-    {
-        foreach (var item in Model.ChatCodes)
-        {
-            <p>@item.CodeContent</p>
-        }
-    }
-    else
-    {
-        <p>You have no chat codes generated</p>
-    }
 
+                                }
+                                     
+                        </tbody>
+                        
+                        
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
-    <p>
-        | @Html.ActionLink("Edit Profile", "Edit", new { UserId = Model.physician.Id })
-    </p>

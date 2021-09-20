@@ -37,3 +37,19 @@ function toggleMoreInfo() {
 
 }
 var isOpen = true;
+
+/* Dashboard js */
+
+var banana = true;
+
+function togglePatientpin() {
+    if (banana) {
+        document.getElementById("patient-pin").style.height = "380px";
+        this.banana = false;
+    }
+    else {
+        document.getElementById("patient-pin").style.height = "0px";
+        this.banana = true;
+    }
+
+}

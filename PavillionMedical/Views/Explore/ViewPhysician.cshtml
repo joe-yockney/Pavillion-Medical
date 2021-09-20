@@ -5,39 +5,134 @@
 }
 
 
-<div class="profile-container">
-    <div class="top-profile">
-        <h4>Physician</h4>
-        <hr />
-        <div class="col-md-3">
+<div class="container">
+    <div class="row">
+        <p style="color:red; margin-left: 860px;">@ViewBag.StatusMessage</p>
+        <div class="col-lg-3">
             @if (Model.ImagePath == null)
             {
-                <div>
-                    <img src="~/Content/Img/avatar-placeholder.png" alt="Alternate Text" width="200px" height="200px" />
-                </div>
+                <img class="profile-img" src="~/Content/Img/avatar-placeholder.png" alt="Alternate Text" width="200" height="200" />
             }
             else
             {
-                <div>
-                    <img src="~/@Model.ImagePath" alt="Alternate Text" width="200px" height="200px" />
-                </div>
+                <img class="profile-img" src="~/@Model.ImagePath" alt="Alternate Text" width="200" height="200" />
             }
+            <div class="qual-info-pane">
+                <h3>Qualifications:</h3>
+                <p>Placeholder</p>
+            </div>
+            <div class="additional-pane">
+                <h3>Additional Info..</h3>
+                <p>Placeholder</p>
+            </div>
+
         </div>
         <div class="col-lg-6">
-            <h2>@Model.Title @Model.FirstName @Model.LastName</h2>
-            <p>Job Title Here</p>           
+            <div class="prof-info-pane">
+                <h2>@Model.Title @Model.FirstName @Model.LastName</h2>
+                <p>Job Title here</p>
+                <div class="col-sm-5">
+                    <div class="spec-tab">
+                        <p><strong>Specialisations:</strong></p>
+                        @if (Model.Specialisation == null)
+                        {
+                            <p>No specialisation listed</p>
+                        }
+                        else
+                        {
+                            <p>@Model.Specialisation</p>
+                        }
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="prac-tab">
+                        <p><strong>Current Practice(s)</strong></p>
+                        @if (Model.Practice == null)
+                        {
+                            <p>No current practice listed</p>
+                        }
+                        else
+                        {
+                            <p>@Model.Practice</p>
+                        }
+                    </div>
+                </div>
+
+            </div>
+            <hr />
+            <div class="bio-window">
+                <h3>About Me:</h3>
+                <p>@Model.Biography</p>
+            </div>
+            <hr />
+            <div>
+                <h3>What patients have said:</h3>
+                <div>
+                    @if (Model.PatientComments.Count == 0)
+                    {
+                        <p>No patient has commented yet..</p>
+                        <p>Be the first?</p>
+                    }
+                    else
+                    {
+                        foreach (var item in Model.PatientComments)
+                        {
+                            <p>@item.Name</p>
+                            <p>@item.Content</p>
+                            <p>@item.DateCommented</p>
+                        }
+                    }
+
+                </div>
+            </div>
         </div>
         <div class="col-lg-3">
-            <p>placeholder</p>
+            <div class="intouch-box">
+                <h3>Get in touch</h3>
+                @using (Html.BeginForm("ContactPhysician", "Explore", new { id = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <p>Patient Pin:</p>
+                    <input class="standard-input" type="number" name="pin" placeholder="Enter PatientPin" required />
+                    <p>First Name:</p>
+                    <input class="standard-input" type="text" name="name" placeholder="Enter your First name" required />
+                    <p>Last Name:</p>
+                    <input class="standard-input" type="text" name="name" placeholder="Enter your Last name" required />
+                    <p>Email:</p>
+                    <input class="standard-input" type="text" name="email" placeholder="Enter your Email" required />
+                    <p>Contact Number:</p>
+                    <input class="standard-input" type="text" name="email" placeholder="Enter your number" required />
+                    <p>Your Message:</p>
+                    <textarea class="message-box" name="input" placeholder="Enter a message.." required></textarea>
+                    <input type="submit" name="submit" value="Submit" />
+                }
+            </div>
+            <div class="comment-box">
+                @using (Html.BeginForm("AddComment", "Explore", new { id = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <h3>Comment</h3>
+                    <p>Enter PatientPin</p>
+                    <input class="standard-input-comment" type="number" name="chatcode" value="" required />
+                    <p>Enter your name</p>
+                    <input class="standard-input-comment" type="text" name="name" value="" required />
+                    <p>Input a Comment</p>
+                    <textarea class="message-box" name="input" placeholder="Enter a comment.." required></textarea>
+                    <p>Select a rating</p>
+                    <label for="cars">Choose a rating:</label>
+                    <select required id="cars" name="rating">
+                        <option value=1>1</option>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                        <option value=4>4</option>
+                        <option value=4>5</option>
+                    </select>
+                    <input type="submit" name="submit" value="Submit" />
+                }
+            </div>
         </div>
-        <div class="col-lg-4">
-            <p>@Model.Specialisation</p>
-
-        </div>
-      
-
 
     </div>
-    
+
+
+
 
 </div>

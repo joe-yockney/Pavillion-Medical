@@ -12,9 +12,9 @@ body {
 
 }
 .footer-bottom {
-    position: fixed;
+    position: absolute;
     left: 0;
-    bottom: 0;
+    margin-top: 20px;
     width: 100%;
     color: black;
     text-align: center;
@@ -306,22 +306,197 @@ body {
 
 /*Profile*/
 
-.profile-container {
-    background: white;
-    height: 1000px;
-    margin-top: -20px;
+.bio-window {
+    height: 285px;
+}
+.bio-window p {
+
+}
+.bio-window h3 {
+
+}
+.profile-img {
+    border-radius: 20px;
+    margin-left: 40px;
+}
+.prof-info-pane {
+    border: 2px solid;
+    border-radius: 10px;
+    height: 240px;
+}
+.prof-info-pane h2 {
+    margin-left:20px;
+}
+.prof-info-pane p {
+    margin-left:20px;
+}
+.intouch-box {
+    border: 2px solid;
+    border-radius: 10px;
+    height: 650px;
+}
+.intouch-box p {
+    text-align: center;
+    font-size: 15px;
+    position: relative;
+    top: 10px;
+}
+.intouch-box h3 {
+    text-align:center;
+}
+.intouch-box input[type=submit] {
+    position: relative;
+    left: 30px;
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 20px;
+    transition: 0.5s;
+}
+.intouch-box input[type=submit]:hover {
+    background-color:gray;
+    color:white;
+}
+.standard-input {
+    margin-left: 19px;
+    width: 220px;
+    height: 33px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+.message-box {
+    margin-left: 19px;
+    width: 220px;
+    height: 140px;
+    border-radius: 10px;
+    margin-top: 5px;
+    resize:none;
+}
+.qual-info-pane {
+    margin-left: 40px;
+    margin-top: 30px;
+}
+.qual-info-pane p {
+
+}
+.qual-info-pane h3 {
+
+}
+.prac-tab {
+    margin-top: 15px;
+    font-size: 15px;
+}
+.prac-tab p {
+
+}
+.spec-tab {
+    margin-top: 15px;
+    font-size: 15px;
+}
+.spec-tab p {
+
+}
+.additional-pane {
+    margin-left: 40px;
+}
+.standard-input-comment {
+    margin-left: 19px;
+    width: 220px;
+    height: 33px;
+    border-radius: 10px;
+}
+.comment-input {
+
+}
+.comment-box {
+    border: 2px solid;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.comment-box p {
+    text-align: center;
+    margin-bottom: -2px;
+}
+.comment-box h3 {
+    text-align: center;
+}
+
+/*Dashboard*/
+
+.dashbox {
+    width: 900px;
+    height: 380px;
+    margin-top: 20px;
+    margin-left: 180px;
+    border-radius: 20px;
+    font-size: 30px;
+    position: relative;
+    right: 70px;
+}
+.dashbox a {
+    width: 290px;
+    height: 172px;
+    border: 2px solid;
+    margin-top: 9px;
+    border-radius: 20px;
+    vertical-align: middle;
+    transition: 0.5s;
+    display: inline-block;
+    text-align: center;
+    padding-top: 60px;
+    border-color: black;
+    background-color: white;
+    color: black;
+    text-decoration:none;
+}
+.dashbox a:hover{
+    background-color:gray;
+    color:white;
+    text-decoration:none;
+}
+.dash-banner {
+    position: relative;
+    width: 885px;
+    left: 107px;
     border-radius: 20px;
 }
-.top-profile {
-    margin-left: 30px;
+.dash-title {
+    margin-left: 100px;
+}
+.patientpin-table {
+    width: 887px;
+    height: 0px;
+    margin-left: 105px;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 20px;
+    border: solid;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
+    transition: 0.5s;
+}
+.patientpin-table table {
+    width: 895px;
+    position: relative;
+    left: -16px;
+    top: 30px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.patientpin-table table th {
+    text-align: center;
+    font-size: 18px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+}
+.patientpin-table table td {
+    text-align: center;
     padding-top: 10px;
-}
-.top-profile h2 {
-
-}
-.top-profile img {
-    border-radius: 20px;
-}
-.top-profile h4 {
-
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
 }

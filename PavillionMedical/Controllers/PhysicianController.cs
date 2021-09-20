@@ -253,13 +253,16 @@ namespace PavillionMedical.Controllers
             try
             {
                 physician.ImagePath = image.ImagePath;
+                Context.SaveChanges();
                 return RedirectToAction("ViewImages", new { messages = Messages.PPSuccess });
+                
             }
             catch (Exception)
             {
 
                 return RedirectToAction("ViewImages", new { messages = Messages.Error });
             }
+            
 
         }
         public ActionResult ViewImages(Messages? messages) //add album view model
