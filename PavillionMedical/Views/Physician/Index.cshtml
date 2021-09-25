@@ -17,7 +17,7 @@
             <div class="col-lg-12">
                 <div class="dashbox">
                     <a href="@Url.Action("ViewPhysician", "Explore", new { id = Model.physician.Id })">My Details <i class="glyphicon glyphicon-paperclip"></i></a>
-                    <a>My Practices <i class="glyphicon glyphicon-home"></i></a>
+                    <a href="@Url.Action("Edit","Physician")">Edit Details <i class="glyphicon glyphicon-pencil"></i></a>
                     <a href="@Url.Action("ViewMessages","Physician")">Messages <span style="color:darkred;">(@Model.physician.PatientMessages.Count())</span></a>
                     <a href="@Url.Action("ViewImages", "Physician")">Images <i class="glyphicon glyphicon-picture"></i></a>
                     <a href="#" onclick="togglePatientpin()">PatientPin <i class="glyphicon glyphicon-star"></i></a>
@@ -51,7 +51,7 @@
                                         <td>@item.DateGenerated</td>
                                         <td>@item.Status</td>
                                         <td>Reference here</td>
-                                        <td>Remove | Restore</td>
+                                        <td><a>Remove</a> | <a>Restore</a></td>
                                         
                                     </tr>
 
@@ -64,6 +64,10 @@
                         
                         
                     </table>
+                    <div>
+                        <a style="position: relative; top: 320px; left: 390px;" href="@Url.Action("GenerateCode","Physician")">Generate New Code</a>
+                    </div>
+
                 </div>
             </div>
 

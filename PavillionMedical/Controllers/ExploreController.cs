@@ -34,7 +34,8 @@ namespace PavillionMedical.Controllers
         {
             var result = context.Physicians.Where(c => c.FirstName.Contains(input) || c.FirstName.ToLower().Contains(input) || c.FirstName.ToUpper().Contains(input)
             || c.LastName.ToLower().Contains(input) || c.LastName.ToUpper().Contains(input) || c.Specialisation.Contains(input) || c.Specialisation.ToUpper().Contains(input)
-            || c.Specialisation.ToLower().Contains(input)).ToList();
+            || c.Specialisation.ToLower().Contains(input) || c.Practice.Contains(input) || c.Practice.ToUpper().Contains(input)
+            || c.Practice.ToLower().Contains(input)).ToList();
 
             return View(result);
         }
